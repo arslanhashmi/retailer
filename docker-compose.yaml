@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  # database container that is utilized by
+  # web application
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: rtailer.db
+    ports:
+      # Mapping to 5434 to avoid conflict to an already
+      # running postgres service on host machine.
+      - "5434:5432"
+    environment:
+      LC_ALL: C.UTF-8
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rtailer_db
+
+  # web application container
+  web:
+    build: .
+    restart: always
+    container_name: rtailer.web
+    environment:
+      DEBUG: 1
+    volumes:
+      - ./:/rtailer
+    ports:
+      - "8080:8080"
+    command: [bash, -c, "python manage.py migrate && python manage.py runserver 0.0.0.0:8080"]
+    links:
+      - db
