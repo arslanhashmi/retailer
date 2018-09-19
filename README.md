@@ -13,15 +13,15 @@ Please have a look at `requirements.txt` for list of all the project dependencie
 ## Installation
 
 Please run the following command to setup Retailer App locally
-```python
-$> curl https://gist.githubusercontent.com/Qubad786/ab8d5dc5f90d0e7569c290e05972ab0e/raw/45b0b6eb4c7c7f7d5f511fadd679982bc1fd2eed/setup.sh > setup.sh
+```sh
+$> curl https://gist.githubusercontent.com/Qubad786/ab8d5dc5f90d0e7569c290e05972ab0e/raw/432094369c2229a2768d3487d9f10f22217a4455/setup.sh > setup.sh
 $> bash setup.sh
 ```
 
 Now, you should be able to play with the app @ `localhost:8080`.
 
 You will need to create a super user in order to log into the Django Administration Console @ `localhost:8080/admin` to add products/categories/users etc.
-```python
+```sh
 # SSH into the rtailer web container and run createsuperuser 
 # management command to setup an admin user.
 
